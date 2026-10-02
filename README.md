@@ -97,22 +97,3 @@ npm run preview
 ```
 
 ---
-
-## 🎯 2-Minute Demo Flow (Hackathon Pitch Script)
-
-1. **Home Screen (`/`)**:
-   - Point out the active safety status badge, quick actions, and simulated nighttime environmental conditions.
-2. **Journey Planner (`/journey`)**:
-   - Tap **"Plan Safe Journey"**.
-   - Show how Route A (Safest) has a **94 Safety Score** due to 92% lighting and 14 open shops, compared to Route B (Fastest, 61 Safety Score) which cuts through a dark alley.
-3. **Live Journey HUD (`/live-journey`)**:
-   - Tap **"Start Safe Journey"**.
-   - Watch the simulated journey progress.
-   - Show the dynamic **Caution Zone Alert** pop up when nearing the dimly lit park lane.
-   - Tap **"Reroute via High Street"** to demonstrate proactive avoidance!
-4. **Voice Guard (`/voice-guard`)**:
-   - Demonstrate the live microphone visualizer and keyword trigger ("SafePath Help").
-5. **SOS & Dashboard (`/sos` -> `/response-dashboard`)**:
-   - Tap the bottom SOS button.
-   - Show the 5-second countdown with audible vibration/cancellation feedback.
-   - View the Guardian Response Dashboard displaying live telemetry, dispatch status, and one-click resolution.
