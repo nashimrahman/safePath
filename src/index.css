@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ====================================================
+   SafePath – Global Styles
+   ==================================================== */
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    @apply h-full;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply h-full bg-surface-950 text-white;
+    overflow-x: hidden;
+  }
+
+  #root {
+    @apply h-full;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-surface-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-700 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-500;
+  }
+}
+
+@layer components {
+  /* ---- Buttons ---- */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl
+           bg-gradient-to-r from-primary-600 to-primary-500
+           text-white font-semibold text-sm
+           shadow-glow-primary
+           transition-all duration-200
+           hover:from-primary-500 hover:to-primary-400 hover:shadow-lg hover:scale-[1.02]
+           active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl
+           bg-surface-800 border border-surface-700
+           text-white font-semibold text-sm
+           transition-all duration-200
+           hover:bg-surface-700 hover:border-primary-600/50
+           active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl
+           text-surface-200 font-medium text-sm
+           transition-all duration-200
+           hover:bg-surface-800 hover:text-white
+           active:scale-[0.98];
+  }
+
+  .btn-emergency {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl
+           bg-gradient-to-r from-emergency-700 to-emergency-600
+           text-white font-bold text-base
+           shadow-glow-emergency
+           transition-all duration-200
+           hover:from-emergency-600 hover:to-emergency-500
+           active:scale-[0.97]
+           animate-glow-pulse;
+  }
+
+  .btn-caution {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl
+           bg-caution-600/20 border border-caution-500/40
+           text-caution-400 font-semibold text-sm
+           transition-all duration-200
+           hover:bg-caution-600/30 hover:border-caution-500/60;
+  }
+
+  /* ---- Cards ---- */
+  .card {
+    @apply bg-surface-900/80 backdrop-blur-sm border border-surface-700/50 rounded-3xl shadow-card;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-200 hover:border-primary-600/40 hover:shadow-card-hover hover:scale-[1.005];
+  }
+
+  .card-glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl;
+  }
+
+  /* ---- Input ---- */
+  .input {
+    @apply w-full bg-surface-800 border border-surface-700 rounded-xl px-4 py-3
+           text-white placeholder-surface-200/50 text-sm
+           transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500/50;
+  }
+
+  /* ---- Badge ---- */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-open {
+    @apply badge bg-emerald-500/20 text-emerald-400 border border-emerald-500/30;
+  }
+
+  .badge-closed {
+    @apply badge bg-surface-700/50 text-surface-300 border border-surface-600/30;
+  }
+
+  .badge-unknown {
+    @apply badge bg-amber-500/20 text-amber-400 border border-amber-500/30;
+  }
+
+  .badge-demo {
+    @apply badge bg-violet-500/20 text-violet-300 border border-violet-500/30;
+  }
+
+  .badge-caution {
+    @apply badge bg-caution-500/20 text-caution-400 border border-caution-500/30;
+  }
+
+  .badge-hazard {
+    @apply badge bg-orange-500/20 text-orange-400 border border-orange-500/30;
+  }
+
+  /* ---- Status indicators ---- */
+  .status-dot {
+    @apply w-2.5 h-2.5 rounded-full;
+  }
+
+  .status-dot-active {
+    @apply status-dot bg-emerald-400 animate-pulse;
+  }
+
+  .status-dot-warning {
+    @apply status-dot bg-caution-400 animate-pulse;
+  }
+
+  .status-dot-danger {
+    @apply status-dot bg-emergency-500 animate-ping-slow;
+  }
+
+  /* ---- Navigation ---- */
+  .nav-item {
+    @apply flex flex-col items-center justify-center gap-1 flex-1 py-2 px-1
+           text-surface-300 transition-all duration-200
+           hover:text-primary-400;
+  }
+
+  .nav-item-active {
+    @apply nav-item text-primary-400;
+  }
+
+  /* ---- Scroll container ---- */
+  .scroll-container {
+    @apply overflow-y-auto overscroll-contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ---- Map overlay ---- */
+  .map-overlay {
+    @apply absolute z-10 bg-surface-900/90 backdrop-blur-md border border-surface-700/50 rounded-2xl shadow-lg;
+  }
+
+  /* ---- Score bar ---- */
+  .score-bar {
+    @apply h-2 rounded-full overflow-hidden bg-surface-700;
+  }
+
+  .score-bar-fill {
+    @apply h-full rounded-full transition-all duration-700;
+  }
+
+  /* ---- Section header ---- */
+  .section-header {
+    @apply text-xs font-semibold uppercase tracking-wider text-surface-300 mb-3;
+  }
+
+  /* ---- Gradient text ---- */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-400 to-violet-400 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-emergency {
+    @apply bg-gradient-to-r from-emergency-400 to-pink-400 bg-clip-text text-transparent;
+  }
+
+  /* ---- Page wrapper ---- */
+  .page {
+    @apply flex flex-col h-full bg-surface-950 animate-fade-in;
+  }
+
+  .page-content {
+    @apply flex-1 overflow-y-auto scroll-container p-4 pb-24;
+  }
+
+  /* ---- Route card ---- */
+  .route-card {
+    @apply card p-4 cursor-pointer transition-all duration-200;
+  }
+
+  .route-card-recommended {
+    @apply route-card border-primary-500/50 bg-primary-950/40 shadow-glow-primary;
+  }
+
+  .route-card-default {
+    @apply route-card hover:border-surface-600;
+  }
+}
+
+@layer utilities {
+  .safe-top {
+    padding-top: max(env(safe-area-inset-top), 1rem);
+  }
+
+  .safe-bottom {
+    padding-bottom: max(env(safe-area-inset-bottom), 1rem);
+  }
+
+  /* Leaflet overrides */
+  .leaflet-container {
+    @apply w-full h-full;
+    font-family: 'Inter', sans-serif !important;
+    background: #13172e !important;
+  }
+
+  .leaflet-tile-pane {
+    filter: brightness(0.85) saturate(1.1) hue-rotate(10deg);
+  }
+
+  .leaflet-control-attribution {
+    @apply text-xs opacity-50 bg-surface-900/80 text-surface-300 !important;
+  }
+
+  .leaflet-control-zoom a {
+    @apply bg-surface-800 border-surface-700 text-white !important;
+  }
+
+  .leaflet-popup-content-wrapper {
+    @apply bg-surface-900 border border-surface-700 rounded-2xl shadow-card text-white !important;
+  }
+
+  .leaflet-popup-tip {
+    @apply bg-surface-900 !important;
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Glass morphism */
+  .glass {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Mobile touch targets */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
